@@ -62,7 +62,7 @@ export const Contact = () => {
   const currentHQ = headquarters[selectedHQ];
 
   return (
-    <div className="bg-black -mt-16 text-black">
+    <div className="bg-black  text-black">
       <div className="h-16 bg-black"></div>
 
       <div className="min-h-full bg-white py-6 sm:py-12 px-4 sm:px-6 lg:px-12 mt-4" >
