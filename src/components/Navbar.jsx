@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { motion, AnimatePresence } from 'framer-motion'
-
+import logo from '../assets/images/biogaseng.png';
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
@@ -82,7 +82,7 @@ export const Navbar = () => {
           {/* Logo */}
           <div className="shrink-0">
             <Link to="/" onClick={handleLinkClick}>
-              <img src='/src/assets/images/biogaseng.png' className='h-16 ' alt="Logo" />
+              <img src={logo} className='h-16 ' alt="Logo" />
             </Link>
           </div>
 

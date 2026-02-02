@@ -214,10 +214,12 @@ export const Omai = () => {
                   // Interaction - Rotation only, no zoom
                   enablePointerInteraction={true}
                   onGlobeReady={(globe) => {
-                    // Disable zoom controls
-                    globe.controls().enableZoom = false;
-                    globe.controls().minDistance = 200;
-                    globe.controls().maxDistance = 200;
+                    if (globe && globe.controls) {
+                      // Disable zoom controls
+                      globe.controls().enableZoom = false;
+                      globe.controls().minDistance = 200;
+                      globe.controls().maxDistance = 200;
+                    }
                   }}
                 />
               </Suspense>
