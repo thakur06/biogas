@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect } from "react";
 import { FiChevronDown, FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import heroVideo from "../assets/videos/hero_bg.mp4";
+import heroVideo from "../assets/videos/hero_bg.MP4";
 
 export const Hero = () => {
   const videoRef = useRef(null);
