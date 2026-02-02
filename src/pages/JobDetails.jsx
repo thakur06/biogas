@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { jobs } from "../constants/Job";
 import careersBg from "../assets/images/careers_bg.jpg";
@@ -7,188 +7,106 @@ export const JobDetails = () => {
   const { id } = useParams();
   const job = jobs.find((j) => j.id === id);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    resume: null,
-    coverLetter: null,
-    referralCode: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData({ ...formData, [name]: files ? files[0] : value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Application for ${job.title} submitted successfully!`);
-  };
-
-  const scrollToForm = () => {
-    document
-      .getElementById("application-form")
-      .scrollIntoView({ behavior: "smooth" });
-  };
-
   if (!job) {
     return (
-      <div className="text-center py-20">
-        <p className="text-gray-600 text-lg">Job not found</p>
-        <Link to="/careers" className="text-blue-600 hover:underline">
-          Go back
+      <div className="text-center py-40 min-h-screen flex flex-col justify-center items-center">
+        <h2 className="text-4xl font-lato-thin uppercase tracking-widest text-gray-900 mb-6">Job not found</h2>
+        <Link to="/careers" className="text-blue-600 font-bold uppercase tracking-widest text-xs hover:text-green-600 transition-colors">
+          Return to Careers
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen text-gray-900 -mt-16">
+    <div className="bg-white min-h-screen text-gray-900 -mt-16">
+      {/* ===== Black Header Spacer ===== */}
+      <div className="h-16 bg-black"></div>
+
       {/* ===== Hero Section ===== */}
-      <div className="bg-black "></div>
       <div
-        className="relative h-[400px] bg-cover bg-center bg-no-repeat"
+        className="relative h-[500px] bg-cover bg-center bg-no-repeat attachment-fixed"
         style={{ backgroundImage: `url(${careersBg})` }}
       >
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative z-10 max-w-5xl mx-auto flex flex-col justify-center h-full text-center text-white px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{job.title}</h1>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
-            <p className="text-gray-300">
-              📍 <span className="font-medium">{job.location}</span>
-            </p>
-            <span className="hidden md:block text-gray-400">|</span>
-            <p className="text-gray-300">
-              💼 <span className="font-medium">{job.type}</span>
-            </p>
+          <p className="text-blue-400 font-bold uppercase tracking-[0.3em] mb-6 text-xs font-helvetica-light">Current Opening</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-8 font-lato-thin uppercase tracking-tight">{job.title}</h1>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-10">
+            <span className="px-6 py-2 rounded-full border border-white/20 backdrop-blur-sm text-sm uppercase tracking-widest font-bold">
+              {job.location}
+            </span>
+            <span className="px-6 py-2 rounded-full bg-green-600 text-white text-sm uppercase tracking-widest font-bold shadow-lg shadow-green-600/20">
+              {job.type}
+            </span>
           </div>
-          <div>
-            <button
-              onClick={scrollToForm}
-              className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
+
+          <div className="mt-8">
+            <a
+              href="mailto:careers@biogaseng.com"
+              className="inline-block bg-white text-black px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-green-600 hover:text-white transition-all transform hover:scale-105"
             >
-              Apply Now
-            </button>
+              Apply via Email
+            </a>
           </div>
         </div>
       </div>
 
       {/* ===== Job Details ===== */}
-      <div className="max-w-4xl mx-auto py-16 px-6">
+      <div className="max-w-4xl mx-auto py-24 px-6">
         <Link
           to="/careers"
-          className="text-blue-600 hover:underline mb-8 inline-block"
+          className="text-gray-400 hover:text-black mb-12 inline-block font-bold text-xs uppercase tracking-widest transition-colors"
         >
           ← Back to Careers
         </Link>
 
-        <h2 className="text-2xl font-semibold mb-3">About the Role</h2>
-        <p className="text-gray-700 mb-8 leading-relaxed">{job.description}</p>
-
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-3">Responsibilities</h2>
-          <ul className="list-disc list-inside text-gray-700 space-y-2">
-            {job.responsibilities.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
-        </div>
-
         <div className="mb-16">
-          <h2 className="text-2xl font-semibold mb-3">Requirements</h2>
-          <ul className="list-disc list-inside text-gray-700 space-y-2">
-            {job.requirements.map((req, i) => (
-              <li key={i}>{req}</li>
-            ))}
-          </ul>
+          <h2 className="text-3xl font-semibold mb-8 font-lato-thin uppercase tracking-wide border-b border-gray-100 pb-4">
+            About the <span className="text-green-600">Role</span>
+          </h2>
+          <p className="text-lg text-gray-600 font-helvetica-light leading-relaxed font-light">
+            {job.description}
+          </p>
         </div>
 
-        {/* ===== Application Form ===== */}
-        <div
-          id="application-form"
-          className="bg-white p-8 rounded-3xl shadow-xl"
-        >
-          <h2 className="text-3xl font-semibold text-center mb-6">
-            Apply for this Position
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black"
-                />
-              </div>
-            </div>
+        <div className="grid md:grid-cols-2 gap-16">
+          <div className="mb-8">
+            <h3 className="text-xl font-bold mb-6 font-lato-thin uppercase tracking-widest text-gray-900">Responsibilities</h3>
+            <ul className="space-y-4">
+              {job.responsibilities.map((r, i) => (
+                <li key={i} className="flex gap-4 items-start text-gray-600 font-helvetica-light text-base leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2.5 shrink-0"></span>
+                  {r}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Upload Resume (PDF)
-                </label>
-                <input
-                  type="file"
-                  name="resume"
-                  accept=".pdf,.doc,.docx"
-                  required
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Upload Cover Letter (Optional)
-                </label>
-                <input
-                  type="file"
-                  name="coverLetter"
-                  accept=".pdf,.doc,.docx"
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                />
-              </div>
-            </div>
+          <div className="mb-8">
+            <h3 className="text-xl font-bold mb-6 font-lato-thin uppercase tracking-widest text-gray-900">Requirements</h3>
+            <ul className="space-y-4">
+              {job.requirements.map((req, i) => (
+                <li key={i} className="flex gap-4 items-start text-gray-600 font-helvetica-light text-base leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2.5 shrink-0"></span>
+                  {req}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Referral Code (Optional)
-              </label>
-              <input
-                type="text"
-                name="referralCode"
-                onChange={handleChange}
-                placeholder="Enter referral code if any"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black"
-              />
-            </div>
-
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition font-medium"
-              >
-                Submit Application
-              </button>
-            </div>
-          </form>
+        <div className="mt-20 p-12 bg-gray-50 rounded-[3rem] text-center border border-gray-100">
+          <h3 className="text-2xl font-bold mb-6 font-lato-thin uppercase tracking-widest">Interested?</h3>
+          <p className="text-gray-500 mb-8 max-w-xl mx-auto">
+            We are always looking for talented individuals to join our mission. Send us your resume and cover letter.
+          </p>
+          <a
+            href="mailto:careers@biogaseng.com"
+            className="inline-block bg-black text-white px-12 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-600 transition-all shadow-xl hover:shadow-blue-600/30"
+          >
+            Send Application
+          </a>
         </div>
       </div>
     </div>

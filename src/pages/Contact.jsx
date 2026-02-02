@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FiMapPin, FiMail, FiPhone } from "react-icons/fi";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ export const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [selectedHQ, setSelectedHQ] = useState('us'); // Default to US
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,21 +40,126 @@ export const Contact = () => {
     }, 1000);
   };
 
+  const headquarters = {
+    us: {
+      name: "US Headquarter",
+      flag: "🇺🇸",
+      logo: "https://biogaseng.com/images/contact/us_office.jpg",
+      address: "3816 Stineman Ct, Suite #203\nLong Beach, CA 90808, USA",
+      email: "info@biogaseng.com",
+      phone: "+1 (555) 123-4567"
+    },
+    india: {
+      name: "India Headquarter",
+      flag: "🇮🇳",
+      logo: "https://biogaseng.com/images/contact/india_office.jpg",
+      address: "Tech Park, Sector 62\nNoida, Uttar Pradesh 201301, India",
+      email: "india@biogaseng.com",
+      phone: "+91 123 456 7890"
+    }
+  };
+
+  const currentHQ = headquarters[selectedHQ];
+
   return (
     <div className="bg-black -mt-16 text-black">
       <div className="h-16 bg-black"></div>
 
-      <div className="min-h-full bg-white py-12 px-4 sm:px-6 lg:px-8 mt-4" >
-        <div className="max-w-6xl mx-auto bg-white  p-8">
-          <p className="text-gray-600 mb-5 uppercase">
-          Let's work together
+      <div className="min-h-full bg-white py-12 px-4 sm:px-6 lg:px-12 mt-4" >
+        <div className="max-w-full mx-auto bg-white  p-8">
+          <p className="text-gray-600 mb-5 uppercase font-helvetica-light">
+            Let's work together
           </p>
           <h1 className="font-lato-thin text-5xl text-black font-semibold">How Can We Help?
           </h1>
           <div className="flex flex-col md:flex-row md:space-x-12 space-y-8 md:space-y-0">
             {/* Left Side - Details */}
             <div className="flex-1">
-             <p className="text-black mt-10 font-helvetica-light font-semibold">Connect with one of our global teams regarding an upcoming project or transformation need.</p>
+              <p className="text-black mt-10 font-helvetica-light font-semibold">Connect with one of our global teams regarding an upcoming project or transformation need.</p>
+
+              {/* Headquarter Radio Buttons */}
+              <div className="mt-8 space-y-6">
+                <div className="flex gap-4">
+                  {/* US Radio Button */}
+                  <label className={`flex-1 cursor-pointer border-2 rounded-lg p-4 transition-all ${selectedHQ === 'us' ? 'border-green-600 bg-green-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                    <input
+                      type="radio"
+                      name="headquarter"
+                      value="us"
+                      checked={selectedHQ === 'us'}
+                      onChange={(e) => setSelectedHQ(e.target.value)}
+                      className="sr-only"
+                    />
+                    <div className="flex items-center gap-3">
+                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedHQ === 'us' ? 'border-green-600' : 'border-gray-300'}`}>
+                        {selectedHQ === 'us' && <div className="w-3 h-3 rounded-full bg-green-600"></div>}
+                      </div>
+                      <span className="text-2xl">{headquarters.us.flag}</span>
+                      <span className="font-bold text-gray-900 uppercase tracking-wide text-sm font-helvetica-light">
+                        US Headquarter
+                      </span>
+                    </div>
+                  </label>
+
+                  {/* India Radio Button */}
+                  <label className={`flex-1 cursor-pointer border-2 rounded-lg p-4 transition-all ${selectedHQ === 'india' ? 'border-green-600 bg-green-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                    <input
+                      type="radio"
+                      name="headquarter"
+                      value="india"
+                      checked={selectedHQ === 'india'}
+                      onChange={(e) => setSelectedHQ(e.target.value)}
+                      className="sr-only"
+                    />
+                    <div className="flex items-center gap-3">
+                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedHQ === 'india' ? 'border-green-600' : 'border-gray-300'}`}>
+                        {selectedHQ === 'india' && <div className="w-3 h-3 rounded-full bg-green-600"></div>}
+                      </div>
+                      <span className="text-2xl">{headquarters.india.flag}</span>
+                      <span className="font-bold text-gray-900 uppercase tracking-wide text-sm font-helvetica-light">
+                        India Headquarter
+                      </span>
+                    </div>
+                  </label>
+                </div>
+
+                {/* Headquarter Details */}
+                <div className="border border-gray-200 rounded-lg overflow-hidden">
+                  {/* Logo */}
+                  <div className="h-48 overflow-hidden bg-gray-100">
+                    <img
+                      src={currentHQ.logo}
+                      alt={currentHQ.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Contact Information */}
+                  <div className="p-6 bg-white space-y-4">
+                    <div className="flex items-start gap-3">
+                      <FiMapPin className="text-green-600 mt-1 shrink-0" />
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 mb-1">Address</p>
+                        <p className="text-sm text-gray-600 whitespace-pre-line">{currentHQ.address}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <FiMail className="text-green-600 mt-1 shrink-0" />
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 mb-1">Email</p>
+                        <a href={`mailto:${currentHQ.email}`} className="text-sm text-blue-600 hover:underline">{currentHQ.email}</a>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <FiPhone className="text-green-600 mt-1 shrink-0" />
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 mb-1">Phone</p>
+                        <a href={`tel:${currentHQ.phone.replace(/\s/g, '')}`} className="text-sm text-blue-600 hover:underline">{currentHQ.phone}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Right Side - Form */}

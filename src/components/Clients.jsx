@@ -10,20 +10,18 @@ export const Clients = () => {
     { name: 'Public Works Los Angeles', logo: public_works_la },
     { name: 'VVWRA', logo: vvwra },
     { name: 'San Ramon', logo: san_ramon },
-    { name: 'Mass Energy Works', logo: massEnergyWorks },
-    { name: 'Mass Energy Works', logo: massEnergyWorks },
-    { name: 'Mass Energy Works', logo: massEnergyWorks }
+
   ]
 
   return (
     <section className="w-full py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl text-black font-bold text-center">Clients & Works</h2>
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 place-items-center">
+        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 place-items-center">
           {clients.map((c, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-center w-32 h-20 sm:w-40 sm:h-24 "
+              className="flex items-center justify-center w-32 h-20 sm:w-40 sm:h-24"
             >
               <img
                 src={c.logo}
