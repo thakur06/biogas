@@ -65,23 +65,24 @@ export const Contact = () => {
     <div className="bg-black -mt-16 text-black">
       <div className="h-16 bg-black"></div>
 
-      <div className="min-h-full bg-white py-12 px-4 sm:px-6 lg:px-12 mt-4" >
-        <div className="max-w-full mx-auto bg-white  p-8">
-          <p className="text-gray-600 mb-5 uppercase font-helvetica-light">
+      <div className="min-h-full bg-white py-6 sm:py-12 px-4 sm:px-6 lg:px-12 mt-4" >
+        <div className="max-w-full mx-auto bg-white p-4 sm:p-8">
+          <p className="text-gray-600 mb-3 sm:mb-5 uppercase font-helvetica-light text-xs sm:text-sm">
             Let's work together
           </p>
-          <h1 className="font-lato-thin text-5xl text-black font-semibold">How Can We Help?
+          <h1 className="font-lato-thin text-3xl sm:text-4xl lg:text-5xl text-black font-semibold mb-6 sm:mb-0">
+            How Can We Help?
           </h1>
-          <div className="flex flex-col md:flex-row md:space-x-12 space-y-8 md:space-y-0">
+          <div className="flex flex-col md:flex-row md:space-x-12 space-y-6 sm:space-y-8 md:space-y-0">
             {/* Left Side - Details */}
             <div className="flex-1">
-              <p className="text-black mt-10 font-helvetica-light font-semibold">Connect with one of our global teams regarding an upcoming project or transformation need.</p>
+              <p className="text-black mt-4 sm:mt-10 font-helvetica-light font-semibold text-sm sm:text-base">Connect with one of our global teams regarding an upcoming project or transformation need.</p>
 
               {/* Headquarter Radio Buttons */}
-              <div className="mt-8 space-y-6">
-                <div className="flex gap-4">
+              <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   {/* US Radio Button */}
-                  <label className={`flex-1 cursor-pointer border-2 rounded-lg p-4 transition-all ${selectedHQ === 'us' ? 'border-green-600 bg-green-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                  <label className={`flex-1 cursor-pointer border-2 rounded-lg p-3 sm:p-4 transition-all ${selectedHQ === 'us' ? 'border-green-600 bg-green-50' : 'border-gray-200 hover:border-gray-300'}`}>
                     <input
                       type="radio"
                       name="headquarter"
@@ -94,15 +95,15 @@ export const Contact = () => {
                       <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedHQ === 'us' ? 'border-green-600' : 'border-gray-300'}`}>
                         {selectedHQ === 'us' && <div className="w-3 h-3 rounded-full bg-green-600"></div>}
                       </div>
-                      <span className="text-2xl">{headquarters.us.flag}</span>
-                      <span className="font-bold text-gray-900 uppercase tracking-wide text-sm font-helvetica-light">
+                      <span className="text-xl sm:text-2xl">{headquarters.us.flag}</span>
+                      <span className="font-bold text-gray-900 uppercase tracking-wide text-xs sm:text-sm font-helvetica-light">
                         US Headquarter
                       </span>
                     </div>
                   </label>
 
                   {/* India Radio Button */}
-                  <label className={`flex-1 cursor-pointer border-2 rounded-lg p-4 transition-all ${selectedHQ === 'india' ? 'border-green-600 bg-green-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                  <label className={`flex-1 cursor-pointer border-2 rounded-lg p-3 sm:p-4 transition-all ${selectedHQ === 'india' ? 'border-green-600 bg-green-50' : 'border-gray-200 hover:border-gray-300'}`}>
                     <input
                       type="radio"
                       name="headquarter"
@@ -115,8 +116,8 @@ export const Contact = () => {
                       <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedHQ === 'india' ? 'border-green-600' : 'border-gray-300'}`}>
                         {selectedHQ === 'india' && <div className="w-3 h-3 rounded-full bg-green-600"></div>}
                       </div>
-                      <span className="text-2xl">{headquarters.india.flag}</span>
-                      <span className="font-bold text-gray-900 uppercase tracking-wide text-sm font-helvetica-light">
+                      <span className="text-xl sm:text-2xl">{headquarters.india.flag}</span>
+                      <span className="font-bold text-gray-900 uppercase tracking-wide text-xs sm:text-sm font-helvetica-light">
                         India Headquarter
                       </span>
                     </div>
@@ -126,7 +127,7 @@ export const Contact = () => {
                 {/* Headquarter Details */}
                 <div className="border border-gray-200 rounded-lg overflow-hidden">
                   {/* Logo */}
-                  <div className="h-48 overflow-hidden bg-gray-100">
+                  <div className="h-40 sm:h-48 overflow-hidden bg-gray-100">
                     <img
                       src={currentHQ.logo}
                       alt={currentHQ.name}
@@ -135,26 +136,26 @@ export const Contact = () => {
                   </div>
 
                   {/* Contact Information */}
-                  <div className="p-6 bg-white space-y-4">
-                    <div className="flex items-start gap-3">
-                      <FiMapPin className="text-green-600 mt-1 shrink-0" />
+                  <div className="p-4 sm:p-6 bg-white space-y-3 sm:space-y-4">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <FiMapPin className="text-green-600 mt-1 shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-sm font-semibold text-gray-900 mb-1">Address</p>
-                        <p className="text-sm text-gray-600 whitespace-pre-line">{currentHQ.address}</p>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-900 mb-1">Address</p>
+                        <p className="text-xs sm:text-sm text-gray-600 whitespace-pre-line">{currentHQ.address}</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <FiMail className="text-green-600 mt-1 shrink-0" />
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <FiMail className="text-green-600 mt-1 shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-sm font-semibold text-gray-900 mb-1">Email</p>
-                        <a href={`mailto:${currentHQ.email}`} className="text-sm text-blue-600 hover:underline">{currentHQ.email}</a>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-900 mb-1">Email</p>
+                        <a href={`mailto:${currentHQ.email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all">{currentHQ.email}</a>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <FiPhone className="text-green-600 mt-1 shrink-0" />
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <FiPhone className="text-green-600 mt-1 shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-sm font-semibold text-gray-900 mb-1">Phone</p>
-                        <a href={`tel:${currentHQ.phone.replace(/\s/g, '')}`} className="text-sm text-blue-600 hover:underline">{currentHQ.phone}</a>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-900 mb-1">Phone</p>
+                        <a href={`tel:${currentHQ.phone.replace(/\s/g, '')}`} className="text-xs sm:text-sm text-blue-600 hover:underline">{currentHQ.phone}</a>
                       </div>
                     </div>
                   </div>
@@ -172,12 +173,12 @@ export const Contact = () => {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 {/* Name */}
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
                   >
                     Name <span className="text-red-500">*</span>
                   </label>
@@ -188,7 +189,7 @@ export const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-2 py-2 border-b border-gray-400 focus:border-blue-600 outline-none transition"
+                    className="w-full px-2 py-2 text-sm sm:text-base border-b border-gray-400 focus:border-blue-600 outline-none transition"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -197,7 +198,7 @@ export const Contact = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
                   >
                     Email <span className="text-red-500">*</span>
                   </label>
@@ -208,7 +209,7 @@ export const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-2 py-2 border-b border-gray-400 focus:border-blue-600 outline-none transition"
+                    className="w-full px-2 py-2 text-sm sm:text-base border-b border-gray-400 focus:border-blue-600 outline-none transition"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -217,7 +218,7 @@ export const Contact = () => {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
                   >
                     Phone <span className="text-red-500">*</span>
                   </label>
@@ -228,7 +229,7 @@ export const Contact = () => {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-2 py-2 border-b border-gray-400 focus:border-blue-600 outline-none transition"
+                    className="w-full px-2 py-2 text-sm sm:text-base border-b border-gray-400 focus:border-blue-600 outline-none transition"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -237,7 +238,7 @@ export const Contact = () => {
                 <div>
                   <label
                     htmlFor="msg"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
                   >
                     Message <span className="text-red-500">*</span>
                   </label>
@@ -248,7 +249,7 @@ export const Contact = () => {
                     rows={4}
                     value={formData.msg}
                     onChange={handleChange}
-                    className="w-full px-2 py-2 border-b border-gray-400 focus:border-blue-600 outline-none transition resize-none"
+                    className="w-full px-2 py-2 text-sm sm:text-base border-b border-gray-400 focus:border-blue-600 outline-none transition resize-none"
                     placeholder="Enter your message"
                   />
                 </div>
@@ -258,7 +259,7 @@ export const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-blue-800 text-white py-3 px-6 rounded-xs font-medium hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 transition disabled:opacity-50"
+                    className="w-full bg-blue-800 text-white py-3 px-6 rounded-xs font-medium text-sm sm:text-base hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 transition disabled:opacity-50"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
