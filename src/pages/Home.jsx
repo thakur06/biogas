@@ -12,6 +12,7 @@ export const Home = () => {
       </div>
       <div className="max-w-svw mx-auto">
          {/* this is main home div */}
+         
          <Details/>
          <Clients/>
       

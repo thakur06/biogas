@@ -27,9 +27,10 @@ export const Navbar = () => {
   }
 
   useEffect(() => {
+    const threshold = 10
     const handleScroll = () => {
       const current = window.scrollY || 0
-      const isAtTop = current <= 0
+      const isAtTop = current <= threshold
       setIsAtTopState(isAtTop)
 
       if (isMenuOpen) {
@@ -50,6 +51,8 @@ export const Navbar = () => {
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
+    // Initialize state on mount
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isMenuOpen])
 
@@ -59,7 +62,7 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-20 font-semibold">
           {/* Logo */}
           <div className="shrink-0">
-            <img src='/src/assets/images/biogas_footer.png' className='h-16 '/>
+            <img src='/src/assets/images/biogaseng.png' className='h-16 '/>
           </div>
 
           {/* Desktop Navigation */}

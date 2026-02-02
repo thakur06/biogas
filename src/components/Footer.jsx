@@ -56,9 +56,12 @@ export const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold text-gray-800 mb-4">Contact</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>Email: info@company.com</li>
+              <li>Email: info@biogaseng.com</li>
               <li>Phone: +1 (555) 123-4567</li>
-              <li>Address: 123 Street, City</li>
+              <li>Address: Biogas Engineering
+3816 Stineman Ct
+Suite #203
+Long Beach, CA 90808 USA</li>
             </ul>
           </div>
         </div>
@@ -66,7 +69,7 @@ export const Footer = () => {
         {/* Copyright + Socials */}
         <div className="mt-8 pt-6 border-t border-gray-200 flex items-center">
           <p className="flex-1 text-center text-sm text-gray-600">
-            © {new Date().getFullYear()} Company Name. All rights reserved.
+            © {new Date().getFullYear()}  Biogas Engineering Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <a
